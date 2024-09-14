@@ -1,0 +1,10 @@
+# git arrtibutes file
+
+# jupyter notebook
+*.ipynb filter=nbstripout
+
+# image
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,10 @@
+# git ignore file
+
+# python related
+*.pyc
+ipynb_checkpoints/
+__pycache__/
+
+# zip and compressed files
+*.zip
+*.gz
