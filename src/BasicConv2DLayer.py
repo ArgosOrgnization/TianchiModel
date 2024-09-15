@@ -8,7 +8,7 @@
 import torch
 import torch.nn as nn
 
-class BasicConv2D(nn.Module):
+class BasicConv2DLayer(nn.Module):
     
     def __init__(
         self,
@@ -21,20 +21,20 @@ class BasicConv2D(nn.Module):
         eps: float = 1e-3,
         momentum: float = 0.1
     ) -> None:
-        super(BasicConv2D, self).__init__()
+        super(BasicConv2DLayer, self).__init__()
         self.conv_2d: nn.Conv2d = nn.Conv2d(
             input_size, output_size,
-            kernel_size=kernel_size,
-            stride=stride,
-            padding=padding,
-            bias=bias
+            kernel_size = kernel_size,
+            stride = stride,
+            padding = padding,
+            bias = bias
         )
         self.batch_norm_2d: nn.BatchNorm2d = nn.BatchNorm2d(
-            eps=eps,
-            momentum=momentum,
-            affine=True
+            eps = eps,
+            momentum = momentum,
+            affine = True
         )
-        self.relu: nn.ReLU = nn.ReLU(inplace=True)
+        self.relu: nn.ReLU = nn.ReLU(inplace = True)
         pass
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
