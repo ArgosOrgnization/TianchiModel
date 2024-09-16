@@ -45,3 +45,21 @@ class BasicConv2DLayer(nn.Module):
         pass
     
     pass
+
+class PreConv2DLayer(nn.Module):
+    
+    def __init__(self) -> None:
+        super(PreConv2DLayer, self).__init__()
+        self.conv_sequnce: nn.Sequential = nn.Sequential(
+            BasicConv2DLayer(3, 32, kernel_size = 3, stride = 2),
+            BasicConv2DLayer(32, 32, kernel_size = 3, stride = 1),
+            BasicConv2DLayer(32, 64, kernel_size = 3, stride = 1)
+        )
+        pass
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x: torch.Tensor = self.conv_sequnce(x)
+        return x
+        pass
+    
+    pass
