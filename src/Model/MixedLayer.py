@@ -42,7 +42,7 @@ class Mixed4aLayer(BasicMixedLayer):
     def __init__(self) -> None:
         branch_1: nn.Sequential = nn.Sequential(
             BasicConv2DLayer(160, 64, kernel_size = 1, stride = 1),
-            BasicMixedLayer(64, 96, kernel_size = 3, stride = 1)
+            BasicConv2DLayer(64, 96, kernel_size = 3, stride = 1)
         )
         branch_2: nn.Sequential = nn.Sequential(
             BasicConv2DLayer(160, 64, kernel_size = 1, stride = 1),

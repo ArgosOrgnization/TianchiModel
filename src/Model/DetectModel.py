@@ -15,6 +15,32 @@ from ReductionLayer import ReductionALayer, ReductionBLayer
 
 class DetectModel(nn.Module):
 
+    input_space: str = "RGB"
+    input_size: tuple = (3, 299, 299)
+    input_range: list = [0, 1]
+    mean: list = [0.5, 0.5, 0.5]
+    std: list = [0.5, 0.5, 0.5]
+
+    def setInputSpace(self, input_space: str) -> None:
+        self.input_space = input_space
+        pass
+
+    def setInputSize(self, input_size: list) -> None:
+        self.input_size = input_size
+        pass
+
+    def setInputRange(self, input_range: list) -> None:
+        self.input_range = input_range
+        pass
+
+    def setMean(self, mean: list) -> None:
+        self.mean = mean
+        pass
+
+    def setStd(self, std: list) -> None:
+        self.std = std
+        pass
+
     def __init__(self, class_number: int) -> None:
         super(DetectModel, self).__init__()
         self.class_number: int = class_number
@@ -42,6 +68,7 @@ class DetectModel(nn.Module):
             InceptionBLayer(),
             ReductionBLayer(),
             # 3 x Inception-C layers
+            InceptionCLayer(),
             InceptionCLayer(),
             InceptionCLayer(),
         )

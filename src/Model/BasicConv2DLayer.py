@@ -16,7 +16,7 @@ class BasicConv2DLayer(nn.Module):
         output_size: int,
         kernel_size: int,
         stride: int,
-        padding: int,
+        padding: int = 0,
         bias: bool = False,
         eps: float = 1e-3,
         momentum: float = 0.1
@@ -30,6 +30,7 @@ class BasicConv2DLayer(nn.Module):
             bias = bias
         )
         self.batch_norm_2d: nn.BatchNorm2d = nn.BatchNorm2d(
+            output_size,
             eps = eps,
             momentum = momentum,
             affine = True

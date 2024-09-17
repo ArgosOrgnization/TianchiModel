@@ -8,3 +8,6 @@ __pycache__/
 # zip and compressed files
 *.zip
 *.gz
+
+# draft
+draft/*
