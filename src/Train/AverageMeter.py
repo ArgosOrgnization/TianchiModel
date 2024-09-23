@@ -8,6 +8,7 @@
 class AverageMeter:
     
     def __init__(self) -> None:
+        self.reset()
         pass
     
     def reset(self) -> None:

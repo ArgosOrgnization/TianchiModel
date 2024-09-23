@@ -5,6 +5,10 @@
  # @ description:
  '''
 
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "."))
+
 import torch
 import torch.nn as nn
 
@@ -91,6 +95,10 @@ class DetectModel(nn.Module):
         x: torch.Tensor = self.features_layer(x)
         x: torch.Tensor = self.logits(x)
         return x
+        pass
+    
+    def getClassNumber(self) -> int:
+        return self.class_number
         pass
 
     pass
