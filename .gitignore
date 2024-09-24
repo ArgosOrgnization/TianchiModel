@@ -9,5 +9,6 @@ __pycache__/
 *.zip
 *.gz
 
-# draft
+# foler
 draft/*
+.VSCodeCounter/

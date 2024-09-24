@@ -1,0 +1,40 @@
+{
+    "recipe name": "demo",
+    "class number": 12, "class number comment": "类别数量",
+    "random seed": {
+        "numpy": 666,
+        "torch manual": 666,
+        "torch cuda manual": 666,
+        "random": 666
+    },
+    "train parameter": {
+        "batch size": 24, "batch size comment": "小数据集上, batch size 不易过大。如出现 out of memory, 应调小 batch size",
+        "worker number": 12, "worker number comment": "进程数, 最好不要超过电脑最大进程数, windows 下报错可以改为 worker number",
+        "stage epoches": [20, 10, 10], "stage epoches comment": "epoch 数量, 分 stage 进, 跑完一个stage后降低学习率进入下一个 stage", 
+        "learning rate": 1e-4, "learning rate comment": "学习率, 一般初始为 1e-4",
+        "learning rate decay": 5, "learning rate decay comment": "学习率衰减, 一般为 /5",
+        "weight decay": 1e-4, "weight decay comment": "权重衰减, 一般为 1e-4"
+    },
+    "initial parameter": {
+        "stage": 0, "stage comment": "当前 stage",
+        "start epoch": 0, "start epoch comment": "当前处于第几个 epoch",
+        "best precision": 0, "best precision comment": "最好的准确率",
+        "lowest loss": 100, "lowest loss comment": "最低的损失"
+    },
+    "progress setup": {
+        "print frequency": 1, "print frequency comment": "每多少个 step 打印一次",
+        "validate dataset ratio": 0.12, "validate dataset ratio comment": "验证集比例",
+        "whether evaluate": false, "whether evaluate comment": "是否评估",
+        "whether resume": false, "whether resume comment": "是否恢复训练",
+        "resume checkpoint": "xxxx/checkpoint.pth.tar", "resume checkpoint comment": "用于恢复训练的 checkpoint"
+    },
+    "model path": {
+        "comment": "these paths are relative to the project '${workspaceFolder}/model/{recipe name}/'",
+        "use time stamp": true, "time stamp comment": "是否加时间戳",
+        "result path": "result", "result path comment": "结果保存路径",
+        "check points path": "check_points", "check point path comment": "checkpoint 保存路径",
+        "check point name": "check_point.pth.tar", "check point name comment": "checkpoint 名称",
+        "best model name": "model_best.pth.tar", "best model name comment": "最好模型名称",
+        "lowest loss name": "lowest_loss.pth.tar", "lowest loss name comment": "最低损失模型名称"
+    }
+}

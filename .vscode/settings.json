@@ -15,5 +15,8 @@
             "license": "MIT",
             "description": "",
         }
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./src"
+    ]
 }
