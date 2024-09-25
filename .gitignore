@@ -12,3 +12,11 @@ __pycache__/
 # foler
 draft/*
 .VSCodeCounter/
+
+# json
+model/**/*.json
+!model/recipe/*.json
+
+# data
+*.csv
+*.log

@@ -7,6 +7,28 @@
         "torch cuda manual": 666,
         "random": 666
     },
+    "data parameter": {
+        "label csv file": "data/label.csv", "label csv file comment": "标签文件",
+        "validate dataset ratio": 0.12, "validate dataset ratio comment": "验证集比例",
+        "random state": 666, "random state comment": "随机种子",
+        "test csv file": "data/test.csv", "test csv file comment": "测试集文件",
+        "mean": [0.485, 0.456, 0.406], "mean comment": "均值, 直接采用ImageNet网络的参数",
+        "std": [0.229, 0.224, 0.225], "std comment": "标准差, 直接采用ImageNet网络的参数",
+        "train transform": {
+            "resize": [400, 400],
+            "color jitter": [0.15, 0.15, 0.15, 0.075],
+            "rotation angles": [0, 90, 180, 270],
+            "random crop": 384
+        },
+        "validate transform": {
+            "resize": [400, 400],
+            "center crop": 384
+        },
+        "test transform": {
+            "resize": [400, 400],
+            "center crop": 384
+        }
+    },
     "train parameter": {
         "batch size": 24, "batch size comment": "小数据集上, batch size 不易过大。如出现 out of memory, 应调小 batch size",
         "worker number": 12, "worker number comment": "进程数, 最好不要超过电脑最大进程数, windows 下报错可以改为 worker number",
@@ -23,18 +45,21 @@
     },
     "progress setup": {
         "print frequency": 1, "print frequency comment": "每多少个 step 打印一次",
-        "validate dataset ratio": 0.12, "validate dataset ratio comment": "验证集比例",
         "whether evaluate": false, "whether evaluate comment": "是否评估",
         "whether resume": false, "whether resume comment": "是否恢复训练",
         "resume checkpoint": "xxxx/checkpoint.pth.tar", "resume checkpoint comment": "用于恢复训练的 checkpoint"
     },
     "model path": {
         "comment": "these paths are relative to the project '${workspaceFolder}/model/{recipe name}/'",
-        "use time stamp": true, "time stamp comment": "是否加时间戳",
+        "use time stamp": true, "time stamp comment": "是否加时间戳作为文件夹名称",
         "result path": "result", "result path comment": "结果保存路径",
         "check points path": "check_points", "check point path comment": "checkpoint 保存路径",
+        "log path": "log", "log path comment": "log 保存路径",
+        "result file name": "result.csv", "result file name comment": "结果文件名称",
         "check point name": "check_point.pth.tar", "check point name comment": "checkpoint 名称",
         "best model name": "model_best.pth.tar", "best model name comment": "最好模型名称",
-        "lowest loss name": "lowest_loss.pth.tar", "lowest loss name comment": "最低损失模型名称"
+        "lowest loss name": "lowest_loss.pth.tar", "lowest loss name comment": "最低损失模型名称",
+        "log file name": "train_log.log", "log file name comment": "log 名称",
+        "best accuracy log file name": "best_accuracy.log", "best accuracy log file name comment": "最好准确率 log 名称"
     }
 }

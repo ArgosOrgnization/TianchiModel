@@ -15,7 +15,7 @@ class BaseDataset(Dataset):
     
     def __init__(
         self,
-        label_csv_file_name: str,
+        label_dataframe: pd.DataFrame,
         transform: object = None,
         target_transform: object = None,
         load_function: callable = loadImageAsRGB,
@@ -24,8 +24,7 @@ class BaseDataset(Dataset):
     ) -> None:
         self.image_path_tag: str = image_path_tag
         self.label_tag: str = label_tag
-        self.label_csv_file_name: str = label_csv_file_name
-        self.label_dataframe: pd.DataFrame = pd.read_csv(label_csv_file_name)
+        self.label_dataframe: pd.DataFrame = label_dataframe
         self.transform: object = transform
         self.target_transform: object = target_transform
         self.load_function: callable = load_function
@@ -50,7 +49,7 @@ class TrainDataset(BaseDataset):
     
     def __init__(
         self,
-        label_csv_file_name: str,
+        label_dataframe: pd.DataFrame,
         transform: object = None,
         target_transform: object = None,
         load_function: callable = loadImageAsRGB,
@@ -58,7 +57,7 @@ class TrainDataset(BaseDataset):
         label_tag: str = "label",
     ) -> None:
         super(TrainDataset, self).__init__(
-            label_csv_file_name=label_csv_file_name,
+            label_dataframe=label_dataframe,
             transform=transform,
             target_transform=target_transform,
             load_function=load_function,
@@ -73,7 +72,7 @@ class ValidateDataset(BaseDataset):
     
     def __init__(
         self,
-        label_csv_file_name: str,
+        label_dataframe: pd.DataFrame,
         transform: object = None,
         target_transform: object = None,
         load_function: callable = loadImageAsRGB,
@@ -81,7 +80,7 @@ class ValidateDataset(BaseDataset):
         label_tag: str = "label",
     ) -> None:
         super(ValidateDataset, self).__init__(
-            label_csv_file_name=label_csv_file_name,
+            label_dataframe=label_dataframe,
             transform=transform,
             target_transform=target_transform,
             load_function=load_function,
@@ -96,7 +95,7 @@ class TestDataset(BaseDataset):
     
     def __init__(
         self,
-        label_csv_file_name: str,
+        label_dataframe: pd.DataFrame,
         transform: object = None,
         target_transform: object = None,
         load_function: callable = loadImageAsRGB,
@@ -104,7 +103,7 @@ class TestDataset(BaseDataset):
         label_tag: str = "label",
     ) -> None:
         super(TestDataset, self).__init__(
-            label_csv_file_name=label_csv_file_name,
+            label_dataframe=label_dataframe,
             transform=transform,
             target_transform=target_transform,
             load_function=load_function,
