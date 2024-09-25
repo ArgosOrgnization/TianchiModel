@@ -85,10 +85,10 @@ class TrainRecipe:
         pass
     
     def resolveInitialParameter(self) -> None:
-        self.stage: int = 0
-        self.start_epoch: int = 0
-        self.best_precision: float = 0
-        self.lowest_loss: float = 0
+        self.stage: int = self.recipe_dict["initial parameter"]["stage"]
+        self.start_epoch: int = self.recipe_dict["initial parameter"]["start epoch"]
+        self.best_precision: float = self.recipe_dict["initial parameter"]["best precision"]
+        self.lowest_loss: float = self.recipe_dict["initial parameter"]["lowest loss"]
         pass
     
     def getBestPrecision(self) -> float:

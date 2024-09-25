@@ -36,7 +36,7 @@ class BaseDataset(Dataset):
         if self.transform is not None:
             image = self.transform(image)
             pass
-        return image_file_name, label
+        return image, label
         pass
     
     def __len__(self) -> int:

@@ -233,7 +233,7 @@ class TrainManager:
             batch_time.update(time.time() - start_time)
             start_time = time.time()
             if index % self.train_recipe.getPrintFrequency() == 0:
-                log: str = f"Epoch: [{epoch}][{index}/{len(self.train_data)}]\t" + \
+                log: str = f"Epoch: [{epoch}][{index}/{len(self.train_data_loader)}]\t" + \
                     f"Time {batch_time.value:.3f} ({batch_time.average:.3f})\t" + \
                     f"Data {data_time.value:.3f} ({data_time.average:.3f})\t" + \
                     f"Loss {losses.value:.4f} ({losses.average:.4f})\t" + \
@@ -264,8 +264,8 @@ class TrainManager:
             accuracy.update(precision, predict_count)
             batch_time.update(time.time() - start_time)
             start_time = time.time()
-            if index % self.print_frequency == 0:
-                log: str = f"TrainValidate: [{index}/{len(self.validate_data)}]\t" + \
+            if index % self.train_recipe.getPrintFrequency() == 0:
+                log: str = f"TrainValidate: [{index}/{len(self.validate_data_loader)}]\t" + \
                     f"Time {batch_time.value:.3f} ({batch_time.average:.3f})\t" + \
                     f"Loss {losses.value:.4f} ({losses.average:.4f})\t" + \
                     f"Accuracy {accuracy.value:.3f} ({accuracy.average:.3f})"
@@ -280,7 +280,7 @@ class TrainManager:
     
     def test(self) -> None:
         self.model.eval()
-        class_number: int = self.model.getClassNumber()
+        class_number: int = self.train_recipe.getClassNumber()
         columns_name: list = ["ImageFile"] + [f"Class{i}" for i in range(class_number)]
         df: pd.DataFrame = pd.DataFrame(columns=columns_name)
         for _, (images, image_file_names) in enumerate(self.test_data_loader):
@@ -336,7 +336,7 @@ class TrainManager:
             }
             self.saveCheckPoints(state, is_best_accuracy, is_lowest_loss)
             if (epoch + 1) in np.cumsum(self.train_recipe.getStageEpoches())[:-1]:
-                self.setStage(self.train_recipe.getStage() + 1)
+                self.train_recipe.setStage(self.train_recipe.getStage() + 1)
                 self.optimizer = self.adjustLearningRate()
                 self.model.load_state_dict(torch.load(self.train_recipe.getBestModelName())["state_dict"])
                 log: str = f"==================== Step into next stage ===================="
@@ -356,8 +356,3 @@ class TrainManager:
         pass
     
     pass
-
-# train_manager: TrainManager = TrainManager("model/recipe/demo.json")
-# print(train_manager.train_data_list)
-# print(train_manager.validate_data_list)
-# print(train_manager.test_data_list)

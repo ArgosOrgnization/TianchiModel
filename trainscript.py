@@ -7,7 +7,16 @@
 
 import os
 import sys
-os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
 from Train.TrainManager import TrainManager
+
+def main() -> None:
+    train_recipe_file_name: str = input("please enter the train recipe file name: ")
+    train_manager: TrainManager = TrainManager(train_recipe_file_name)
+    train_manager.start()
+    pass
+
+if __name__ == "__main__":
+    main()
+    pass

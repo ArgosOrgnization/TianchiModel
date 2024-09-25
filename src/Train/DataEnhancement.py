@@ -20,7 +20,7 @@ class ImageRotator:
         return self.rotate(image, degrees)
         pass
     
-    def rotate(image: Image, degrees: float) -> Image:
+    def rotate(self, image: Image, degrees: float) -> Image:
         return image.rotate(degrees)
         pass
     

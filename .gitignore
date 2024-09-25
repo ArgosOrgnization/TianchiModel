@@ -8,10 +8,14 @@ __pycache__/
 # zip and compressed files
 *.zip
 *.gz
+*.tar
+*.tar.gz
+*.pth.tar
 
 # foler
 draft/*
 .VSCodeCounter/
+data/__MACOSX/*
 
 # json
 model/**/*.json
@@ -20,3 +24,6 @@ model/**/*.json
 # data
 *.csv
 *.log
+*.jpg
+*.png
+**/.DS_Store
