@@ -1,6 +1,19 @@
 {
     "recipe name": "demo",
-    "class number": 12, "class number comment": "类别数量",
+    "classes": {
+        "正常": 0, 
+        "不导电": 1,
+        "擦花": 2,
+        "横条压凹": 3,
+        "桔皮": 4,
+        "漏底": 5,
+        "碰伤": 6,
+        "起坑": 7,
+        "凸粉": 8,
+        "涂层开裂": 9,
+        "脏点": 10,
+        "其他": 11
+    },
     "random seed": {
         "numpy": 666,
         "torch manual": 666,

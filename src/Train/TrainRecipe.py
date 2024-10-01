@@ -44,7 +44,7 @@ class TrainRecipe:
         pass
     
     def load(self) -> dict:
-        with open(self.train_recipe_file_name, "r") as file:
+        with open(self.train_recipe_file_name, "r", encoding="utf-8") as file:
             self.recipe_dict: dict = json.load(file)
             pass
         self.resolve()
@@ -52,7 +52,8 @@ class TrainRecipe:
     
     def resolveBasicInfomaion(self) -> None:
         self.recipe_name: str = self.recipe_dict["recipe name"]
-        self.class_number: int = self.recipe_dict["class number"]
+        self.classes_dict: dict = self.recipe_dict["classes"]
+        self.class_number: int = len(self.classes_dict)
         pass
     
     def resolveRandomSeed(self) -> None:
