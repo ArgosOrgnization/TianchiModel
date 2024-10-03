@@ -16,6 +16,7 @@ __pycache__/
 draft/*
 .VSCodeCounter/
 data/__MACOSX/*
+resources/models/**
 
 # json
 model/**/*.json
@@ -27,3 +28,5 @@ model/**/*.json
 *.jpg
 *.png
 **/.DS_Store
+!data/label.csv
+!data/test.csv

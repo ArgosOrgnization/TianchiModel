@@ -16,19 +16,42 @@ from PySide6 import QtWidgets
 from qt_material import apply_stylesheet
 
 from ModelChoiceDialog import ModelChoiceDialog
+from MainWindow import MainWindow
 
 os.environ["QT_API"] = "pyside6"
 
 def main() -> None:
-    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling) # support high dpi scaling
+    # below line seem aborted in PySide6
+    # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling) # support high dpi scaling
     app: QtWidgets.QApplication = QtWidgets.QApplication(sys.argv)
-    apply_stylesheet(app, theme="light_teal.xml")
+    apply_stylesheet(app, theme="dark_teal.xml")
     model_choice_dialog: ModelChoiceDialog = ModelChoiceDialog()
     model_choice_dialog.show()
+    if model_choice_dialog.exec() == QtWidgets.QDialog.Accepted:
+        model_runner_device: str = model_choice_dialog.getModelRunnerDevice()
+        model_path: str = model_choice_dialog.getModelPath()
+        try:
+            main_window: MainWindow = MainWindow(model_runner_device, model_path)
+            main_window.show()
+            pass
+        except Exception as e:
+            print(f"error: {e}")
+            print(f"model path: {model_path} is invalid")
+            warning_nessage_box: QtWidgets.QMessageBox = QtWidgets.QMessageBox()
+            warning_nessage_box.setWindowTitle("警告")
+            warning_nessage_box.setText("模型路径无效或遇错误, 请重新选择或者检查路径")
+            warning_nessage_box.setStyleSheet("font-size: 16px; font-weight: bold; font-family: Microsoft YaHei;")
+            warning_nessage_box.show()
+            if warning_nessage_box.exec() == QtWidgets.QMessageBox.Ok:
+                model_choice_dialog.show()
+                pass
+            pass
+        pass
+    else:
+        sys.exit(0)
+        pass
     sys.exit(app.exec())
     pass
-
-main()
 
 '''
 url: https://qt-material.readthedocs.io/en/latest/index.html
