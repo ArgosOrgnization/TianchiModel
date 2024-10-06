@@ -52,7 +52,7 @@ class SingleProcessLayout(QHBoxLayout):
         result_tensor: torch.Tensor = self.model_runner.singleCallByImagePath(self.getPicturFileName())
         class_index: int = self.model_runner.singlePossibleClassIndex(result_tensor)
         class_name: str = self.model_runner.model_loader.getClassName(class_index)
-        result_list = list(result_tensor.detach().numpy())
+        result_list = list(result_tensor.cpu().detach().numpy())
         for index, result in enumerate(result_list):
             self.result_table_widget.setItem(index, 1, QTableWidgetItem(str(result)))
             pass

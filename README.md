@@ -8,6 +8,8 @@ A repo to learn tianchi competition's model and a desktop application built on `
 
 ### Train
 
+**You'd better run the training on linux.**
+
 First you need install the training environment. A conda `yaml` file [envtrain.yaml](envtrain.yaml) is provided. You can create the environment by running:
 
 ```bash
@@ -33,6 +35,8 @@ please enter the train recipe file name: model/recipe/demo.json # take the demo.
 ```
 
 ### Application
+
+**You'd better run the application on windows.**
 
 First you need install the application environment. A conda `yaml` file [envapp.yaml](envapp.yaml) is provided. You can create the environment by running:
 
